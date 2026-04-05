@@ -46,3 +46,10 @@ async def verify_certificate(
     finally:
         if saved_path and Path(saved_path).exists():
             Path(saved_path).unlink(missing_ok=True)
+
+import os
+
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 10000))
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
